@@ -14,8 +14,12 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class MatrixSteps {
+<<<<<<< HEAD
 
     Matrix cofactorMatrix ;
+=======
+    double det ;
+>>>>>>> origin/lilia
     Matrix mat;
 
     @Given("I have A Matrix")
@@ -23,18 +27,25 @@ public class MatrixSteps {
          mat=new Matrix();
     }
 
+<<<<<<< HEAD
 
     // Cofactor
 
     @When("I compute cofactor of")
     public void iComputeCofactorOf(DataTable table) throws NoSquareException {
         double [][] data = new double[2][2];
+=======
+    @When("I compute determinant of")
+    public void iComputeDeterminantOf(DataTable table) throws NoSquareException {
+        double [][] data = new double[3][3];
+>>>>>>> origin/lilia
         List<Map<String, Double>> rows = table.asMaps(String.class, Double.class);
         int i =0;
         for (Map<String, Double> columns : rows){
             int j =0;
             data[i][j]= columns.get("col1");
             data[i][j+1] = columns.get("col2");
+<<<<<<< HEAD
             i=i+1;
         }
         mat.setData(data);
@@ -58,5 +69,20 @@ public class MatrixSteps {
 
 
     }
+=======
+            data[i][j+2]= columns.get("col3");
+            i=i+1;
+        }
+        mat.setData(data);
+        det = MatrixMathematics.determinant(mat);
+    }
+
+    @Then("The result of determinant is {double}")
+    public void iFindAsDeterminantResult(double arg0) {
+        Assert.assertEquals(arg0,det,0);
+
+    }
+
+>>>>>>> origin/lilia
 }
 

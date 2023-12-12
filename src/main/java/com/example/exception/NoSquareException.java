@@ -1,3 +1,4 @@
+
 package com.example.exception;
 
 public class NoSquareException extends Exception {
@@ -14,3 +15,6 @@ public class NoSquareException extends Exception {
 	}
 
 }
+
+
+

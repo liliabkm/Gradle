@@ -10,7 +10,16 @@ public class MatrixMathematics {
 	 */
 	private MatrixMathematics(){}
 	
-	
+
+
+	/**
+	 * Determinant of a square matrix
+	 * The following function find the determinant in a recursively.
+	 * @param matrix
+	 * @return
+	 * @throws NoSquareException
+	 */
+
 	public static double determinant(Matrix matrix) throws NoSquareException {
 		int m = 0;
 		if (!matrix.isSquare())
@@ -29,28 +38,14 @@ public class MatrixMathematics {
 		return sum;
 	}
 
+
 	private static int changeSign(int i) {
 		if (i%2==0)
 			return 1;
 		return -1;
 	}
 
-	public static Matrix createSubMatrix(Matrix matrix, int excluding_row, int excluding_col) {
-		Matrix mat = new Matrix(matrix.getNrows()-1, matrix.getNcols()-1);
-		int r = -1;
-		for (int i=0;i<matrix.getNrows();i++) {
-			if (i==excluding_row)
-				continue;
-				r++;
-				int c = -1;
-			for (int j=0;j<matrix.getNcols();j++) {
-				if (j==excluding_col)
-					continue;
-				mat.setValueAt(r, ++c, matrix.getValueAt(i, j));
-			}
-		}
-		return mat;
-	}
+
 	
 	/**
 	 * The cofactor of a matrix
@@ -72,4 +67,34 @@ public class MatrixMathematics {
 	}
 
 
+	/**
+	 * Determine the sign; i.e. even numbers have sign + and odds -
+	 * @param i
+	 * @return
+	 */
+
+	/**
+	 * Creates a submatrix excluding the given row and column
+	 * @param matrix
+	 * @param excluding_row
+	 * @param excluding_col
+	 * @return
+	 */
+	public static Matrix createSubMatrix(Matrix matrix, int excluding_row, int excluding_col) {
+		Matrix mat = new Matrix(matrix.getNrows()-1, matrix.getNcols()-1);
+		int r = -1;
+		for (int i=0;i<matrix.getNrows();i++) {
+			if (i==excluding_row)
+				continue;
+				r++;
+				int c = -1;
+			for (int j=0;j<matrix.getNcols();j++) {
+				if (j==excluding_col)
+					continue;
+				mat.setValueAt(r, ++c, matrix.getValueAt(i, j));
+			}
+		}
+		return mat;
+	}
+	
 }
